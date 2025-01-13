@@ -2,18 +2,29 @@ import React, { useState, useRef, useEffect } from 'react';
 import s from './Header.module.scss';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
+import { useAppContext } from '../../context';
 
 const Header = () => {
+  const { isCard1, isCard2, toggleOpen1, toggleOpen2 } = useAppContext;
   const [isActive, setIsActive] = useState(false);
   const [prevSlideImage, setPrevSlideImage] = useState('/moto-2.png'); // Начальное изображение
 
   const swiperRef = useRef(null);
 
   const slides = [
-    { id: 1, title: 'DUГATI', img: '/moto-1.png', details: '215 CV, 300 km/h, NPX 25/30' },
-    { id: 2, title: 'DUГATI', img: '/moto-2.png', details: '168 CV, 274 km/h, Twin Pulse' },
+    {
+      id: 1,
+      title: 'DUГATI',
+      img: '/moto-1.png',
+      details: '215 CV, 300 km/h, NPX 25/30',
+    },
+    {
+      id: 2,
+      title: 'DUГATI',
+      img: '/moto-2.png',
+      details: '168 CV, 274 km/h, Twin Pulse',
+    },
   ];
-
 
   const toggleSearch = () => {
     setIsActive(!isActive);
@@ -52,12 +63,13 @@ const Header = () => {
     }
   }, []);
 
-
   return (
     <>
       <header className={s.header}>
         <nav className={s.nav}>
-          <a className={s.logo} href="">DUCATI</a>
+          <a className={s.logo} href="">
+            DUCATI
+          </a>
 
           <div className={s.menu}>
             <a href="">HOME</a>
@@ -66,7 +78,10 @@ const Header = () => {
             <a href="">CONTACT</a>
           </div>
 
-          <div className={`${s.search} ${isActive ? s.active : null}`} onClick={toggleSearch}>
+          <div
+            className={`${s.search} ${isActive ? s.active : null}`}
+            onClick={toggleSearch}
+          >
             <img src="/search.svg" alt="" />
             <input onClick={onInputFocus} type="text" placeholder="Search..." />
           </div>
@@ -89,7 +104,7 @@ const Header = () => {
                     DUГATI
                     <img src="/moto-1.png" alt="moto" />
                   </h1>
-                  <button>Read more</button>
+                  <button onClick={toggleOpen1}>Read More </button>
                 </div>
 
                 <div className={s.inner}>
@@ -97,7 +112,9 @@ const Header = () => {
                     <p>215 CV</p>
                   </div>
                   <div>
-                    <p>300 <br /> km/h</p>
+                    <p>
+                      300 <br /> km/h
+                    </p>
                   </div>
                   <div>
                     <p>NPX 25/30</p>
@@ -117,7 +134,7 @@ const Header = () => {
                     DUГATI
                     <img src="/moto-2.png" alt="moto" />
                   </h1>
-                  <button>Read more</button>
+                  <button onClick={toggleOpen2}>Read More </button>
                 </div>
 
                 <div className={s.inner}>
@@ -125,7 +142,9 @@ const Header = () => {
                     <p>168 CV</p>
                   </div>
                   <div>
-                    <p>274 <br /> km/h</p>
+                    <p>
+                      274 <br /> km/h
+                    </p>
                   </div>
                   <div>
                     <p>Twin Pulse</p>

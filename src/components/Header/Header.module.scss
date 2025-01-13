@@ -4,6 +4,10 @@
   background-repeat: no-repeat;
   background-size: 50%;
   overflow: hidden;
+  @media (max-width:900px) {
+    overflow: unset;
+    padding-bottom: 40px;
+  }
 
   &::after {
     content: '';
@@ -24,6 +28,14 @@
   align-items: center;
   gap: 15px;
 
+  @media (max-width: 600px) {
+    flex-direction: column;
+    padding: 15px;
+    .search {
+      right: auto ;
+    }
+  }
+
   a {
     text-decoration: none;
     color: white;
@@ -42,6 +54,10 @@
     align-items: center;
     gap: 100px;
     justify-content: center;
+
+    @media (max-width:1300px) {
+display: none !important;
+    }
   }
 
   .search {
@@ -86,10 +102,25 @@
   justify-content: space-between;
   align-items: center;
   gap: 15px;
+
+  @media (max-width:700px) {
+    flex-direction: column;
+
+    .next {
+      width: 220px;
+      height: 52px;
+    }
+
+    .inner {
+      flex-direction: row;
+      margin-right: 0;
+    }
+  }
 }
 
 .title {
-  font-size: 250px;
+  // font-size: 250px;
+  font-size: clamp(3.125rem, -0.495rem + 14.85vw, 12.5rem);
   color: transparent;
   text-transform: uppercase;
   font-weight: 900;
@@ -132,10 +163,10 @@
   border: none;
 }
 .inner {
-    display: flex;
-    flex-direction: column;
-    gap: 52px;
-    margin-right: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 52px;
+  margin-right: 50px;
 
   div {
     width: 75px;
@@ -153,49 +184,56 @@
 }
 
 .box {
-    button {
-        background-color: #000;
-color: #fff;
-padding: 20px 40px;
-border: none;
-font-weight: 900;
-font-size: 20px;
-text-transform: uppercase;
-letter-spacing: 3px;
-position: relative;
-z-index: 5;
-margin-left: auto;
-display: block;
-bottom: -150px;
-cursor: pointer;
+  button {
+    background-color: #000;
+    color: #fff;
+    padding: 20px 40px;
+    border: none;
+    font-weight: 900;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    position: relative;
+    z-index: 5;
+    margin-left: auto;
+    display: block;
+    bottom: -150px;
+    cursor: pointer;
 
-transition: 0,5s;
-
-&:hover {
-    background-color: #fff;
-    color:#ca0000;
-}
+    transition: 0, 5s;
+    @media (max-width:700px) {
+      bottom: -180px;
     }
+
+    &:hover {
+      background-color: #fff;
+      color: #ca0000;
+    }
+  }
 }
 
 .after_card {
-    display: flex;
-    width: max-content;
-    background: linear-gradient(180deg, #990000 0%, #ca0000 49.5%, #990000 100%);
-    margin-top: 52px;
-    margin-left: 52px;
-    position: relative;
-    top: -120px;
-    z-index: 5;
-    cursor: pointer;
-    p {
-        color: #fff;
-background-color: black;
-max-width: 52px;
-padding: 30px;
-    }
-    img {
-        max-width: 250px;
-        padding: 10px;
-    }
+  display: flex;
+  width: max-content;
+  background: linear-gradient(180deg, #990000 0%, #ca0000 49.5%, #990000 100%);
+  margin-top: 52px;
+  margin-left: 52px;
+  position: relative;
+  top: -120px;
+  z-index: 5;
+  cursor: pointer;
+
+  @media (max-width:700px) {
+    top: -80px;
+  }
+  p {
+    color: #fff;
+    background-color: black;
+    max-width: 52px;
+    padding: 30px;
+  }
+  img {
+    max-width: 250px;
+    padding: 10px;
+  }
 }
